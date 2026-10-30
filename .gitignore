@@ -1,0 +1,35 @@
+# Entornos virtuales
+venv/
+env/
+
+# Archivos compilados de Python
+__pycache__/
+*.pyc
+
+# Variables de entorno (secretos)
+.env
+
+# Archivos de configuración locales de VS Code
+.vscode/
+
+# Caché de pruebas (por si luego usan pytest)
+.pytest_cache/
+
+# Node.js y frontend
+node_modules/
+dist/
+dist-ssr/
+.vite/
+coverage/
+*.local
+.env.local
+.env.*.local
+
+# Sistema operativo y editores
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
