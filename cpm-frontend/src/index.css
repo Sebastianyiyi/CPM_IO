@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #f8fafc;
+}
+
+.cpm-node-label {
+  font-family:
+    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  color: #475569;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.cpm-node-label .cpm-node-e,
+.cpm-node-label .cpm-node-l {
+  position: absolute;
+  left: 0;
+  z-index: 30;
+  display: inline-flex;
+  min-width: 34px;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 7px;
+  border: 1px solid #e2e8f0;
+  border-radius: 9999px;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+  transform: translateX(-50%);
+}
+
+.cpm-node-label .cpm-node-e {
+  bottom: 34px;
+}
+
+.cpm-node-label .cpm-node-l {
+  top: 34px;
+}
+
+.cpm-node-label .is-critical {
+  color: #c2410c;
+  border-color: #fdba74;
+  background: #fff7ed;
+}
