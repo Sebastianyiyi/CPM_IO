@@ -225,6 +225,23 @@ def solve_cpm(activities: Sequence[ActivityInput]) -> CPMResponse:
                 Dij=_clean(duration),
                 H=_clean(slack),
                 critical=critical,
+                dummy=False,
+            )
+        )
+
+    for tail, head, data, slack, critical in edge_records:
+        if not data["dummy"]:
+            continue
+
+        results.append(
+            ActivityResult(
+                activity=data["dummy_name"],
+                Ei=_clean(early[tail]),
+                Lj=_clean(late[head]),
+                Dij=0.0,
+                H=_clean(slack),
+                critical=critical,
+                dummy=True,
             )
         )
 

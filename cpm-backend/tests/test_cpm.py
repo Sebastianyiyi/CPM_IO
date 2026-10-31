@@ -71,6 +71,20 @@ def test_parallel_activities_create_dummies():
     assert all(edge.duration == 0 for edge in dummies)
     assert len(response.nodes) == 5
 
+    assert results["f1"].dummy
+    assert results["f1"].Ei == 2
+    assert results["f1"].Lj == 3
+    assert results["f1"].Dij == 0
+    assert results["f1"].H == 1
+    assert not results["f1"].critical
+
+    assert results["f2"].dummy
+    assert results["f2"].Ei == 3
+    assert results["f2"].Lj == 3
+    assert results["f2"].Dij == 0
+    assert results["f2"].H == 0
+    assert results["f2"].critical
+
 
 def test_multiple_terminals_create_sink_dummies():
     response = solve(
@@ -87,6 +101,19 @@ def test_multiple_terminals_create_sink_dummies():
     dummies = [edge for edge in response.edges if edge.dummy]
     assert [edge.label for edge in dummies] == ["f1 (0)", "f2 (0)"]
     assert len(response.nodes) == 4
+
+    results = results_by_name(response)
+    assert results["f1"].dummy
+    assert results["f1"].Ei == 2
+    assert results["f1"].Lj == 3
+    assert results["f1"].H == 1
+    assert not results["f1"].critical
+
+    assert results["f2"].dummy
+    assert results["f2"].Ei == 3
+    assert results["f2"].Lj == 3
+    assert results["f2"].H == 0
+    assert results["f2"].critical
 
 
 def test_complex_dependencies_and_slack():
@@ -115,6 +142,18 @@ def test_complex_dependencies_and_slack():
 
     dummies = [edge for edge in response.edges if edge.dummy]
     assert [edge.label for edge in dummies] == ["f1 (0)", "f2 (0)"]
+
+    assert results["f1"].dummy
+    assert results["f1"].Ei == 6
+    assert results["f1"].Lj == 6
+    assert results["f1"].H == 0
+    assert results["f1"].critical
+
+    assert results["f2"].dummy
+    assert results["f2"].Ei == 5
+    assert results["f2"].Lj == 6
+    assert results["f2"].H == 1
+    assert not results["f2"].critical
 
 
 def test_multiple_critical_paths():

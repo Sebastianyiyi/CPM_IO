@@ -18,6 +18,7 @@ export interface ActivityResult {
   Dij: number
   H: number
   critical: boolean
+  dummy: boolean
 }
 
 export interface GraphNode {

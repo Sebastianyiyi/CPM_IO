@@ -55,12 +55,25 @@ export function ResultsTable({ data }: ResultsTableProps) {
               <tbody className="divide-y divide-slate-100">
                 {data.results.map((row) => (
                   <tr
-                    key={row.activity}
-                    className={row.critical ? 'bg-orange-50/70' : ''}
+                    key={`${row.dummy ? 'dummy' : 'activity'}-${row.activity}`}
+                    className={
+                      row.critical
+                        ? 'bg-orange-50/70'
+                        : row.dummy
+                          ? 'bg-slate-50/70'
+                          : ''
+                    }
                   >
                     <td className="px-4 py-3 font-medium text-slate-900">
-                      <span className="inline-flex items-center gap-2">
-                        {row.activity}
+                      <span className="inline-flex flex-wrap items-center gap-2">
+                        <span className={row.dummy ? 'italic text-slate-600' : ''}>
+                          {row.activity}
+                        </span>
+                        {row.dummy && (
+                          <span className="rounded-full bg-slate-200 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-slate-600">
+                            Ficticia
+                          </span>
+                        )}
                         {row.critical && (
                           <span className="rounded-full bg-orange-600 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
                             Crítica
