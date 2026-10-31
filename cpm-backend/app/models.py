@@ -95,6 +95,7 @@ class ActivityResult(BaseModel):
     Dij: float
     H: float
     critical: bool
+    dummy: bool = False
 
 
 class GraphNode(BaseModel):

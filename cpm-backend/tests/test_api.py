@@ -42,6 +42,27 @@ def test_solve_endpoint_returns_expected_contract():
         "Dij": 2.0,
         "H": 0.0,
         "critical": True,
+        "dummy": False,
+    }
+    dummy_results = [result for result in payload["results"] if result["dummy"]]
+    assert [result["activity"] for result in dummy_results] == ["f1", "f2"]
+    assert dummy_results[0] == {
+        "activity": "f1",
+        "Ei": 6.0,
+        "Lj": 6.0,
+        "Dij": 0.0,
+        "H": 0.0,
+        "critical": True,
+        "dummy": True,
+    }
+    assert dummy_results[1] == {
+        "activity": "f2",
+        "Ei": 5.0,
+        "Lj": 6.0,
+        "Dij": 0.0,
+        "H": 1.0,
+        "critical": False,
+        "dummy": True,
     }
     assert set(payload["nodes"][0]) == {
         "id",

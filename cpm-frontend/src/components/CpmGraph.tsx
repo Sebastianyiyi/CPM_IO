@@ -104,8 +104,10 @@ const nodeLabelOptions: NodeHtmlLabelOptions[] = [
     halignBox: 'center',
     valignBox: 'center',
     tpl: (node) => `
-      <span class="cpm-node-e${node.critical ? ' is-critical' : ''}">E ${formatNumber(node.Ei)}</span>
-      <span class="cpm-node-l${node.critical ? ' is-critical' : ''}">L ${formatNumber(node.Lj)}</span>
+      <div class="cpm-node-stack">
+        <span class="cpm-node-e${node.critical ? ' is-critical' : ''}">E ${formatNumber(node.Ei)}</span>
+        <span class="cpm-node-l${node.critical ? ' is-critical' : ''}">L ${formatNumber(node.Lj)}</span>
+      </div>
     `,
   },
 ]
